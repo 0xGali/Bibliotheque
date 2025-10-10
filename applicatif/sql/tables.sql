@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-CREATE TYPE etatOeuvre AS ENUM ('réservée','non réservée');
+CREATE TYPE etatOeuvre AS ENUM ('reservee','non reservee');
 
 CREATE TABLE Oeuvre(
     titre VARCHAR(50) PRIMARY KEY,
@@ -21,7 +21,7 @@ CREATE TABLE Reservation(
     PRIMARY KEY(titre,nom,dateReservation)
 );
 
-CREATE TYPE etatExemplaire AS ENUM ('disponible','emprunté');
+CREATE TYPE etatExemplaire AS ENUM ('disponible','emprunte');
 
 CREATE TABLE Exemplaire(
     titre VARCHAR(50) REFERENCES Oeuvre(titre),
