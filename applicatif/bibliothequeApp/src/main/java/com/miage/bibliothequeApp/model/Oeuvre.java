@@ -15,4 +15,6 @@ public class Oeuvre {
     @Enumerated(EnumType.STRING)
     @Column(name = "etat")
     private EtatOeuvre etat;
+    
+    private Integer nbresa;
 }

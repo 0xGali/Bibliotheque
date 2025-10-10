@@ -6,7 +6,8 @@ CREATE TABLE Oeuvre(
     titre VARCHAR(50) PRIMARY KEY,
     auteur VARCHAR(50),
     editeur VARCHAR(50),
-    etat etatOeuvre
+    etat etatOeuvre,
+    nbResa INTEGER
 );
 
 CREATE TABLE Usager(
