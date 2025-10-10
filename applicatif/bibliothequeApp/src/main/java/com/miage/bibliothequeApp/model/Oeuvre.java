@@ -1,8 +1,6 @@
 package com.miage.bibliothequeApp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -11,6 +9,12 @@ import lombok.Data;
 public class Oeuvre {
     @Id
     private String titre;
+
     private String auteur;
+
     private String editeur;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "etat")
+    private EtatOeuvre etat;
 }
