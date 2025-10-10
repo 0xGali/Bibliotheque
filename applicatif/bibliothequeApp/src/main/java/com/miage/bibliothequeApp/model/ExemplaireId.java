@@ -7,14 +7,14 @@ import jakarta.persistence.Embeddable;
 @Embeddable
 public class ExemplaireId implements Serializable {
     private String titre;
-    private Long numExemplaire;
+    private Long numexemplaire;
 
     // Constructeurs, getters, setters, equals, hashCode
     public ExemplaireId() {}
 
     public ExemplaireId(String titre, Long numExemplaire) {
         this.titre = titre;
-        this.numExemplaire = numExemplaire;
+        this.numexemplaire = numExemplaire;
     }
 
     // Getters et setters
@@ -25,11 +25,11 @@ public class ExemplaireId implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         ExemplaireId that = (ExemplaireId) o;
         return Objects.equals(titre, that.titre) &&
-                Objects.equals(numExemplaire, that.numExemplaire);
+                Objects.equals(numexemplaire, that.numexemplaire);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titre, numExemplaire);
+        return Objects.hash(titre, numexemplaire);
     }
 }
