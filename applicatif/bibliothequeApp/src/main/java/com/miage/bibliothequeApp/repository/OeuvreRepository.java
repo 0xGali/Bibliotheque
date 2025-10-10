@@ -1,5 +1,10 @@
 package com.miage.bibliothequeApp.repository;
 
-public class OeuvreRepository {
+import com.miage.bibliothequeApp.model.Oeuvre;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OeuvreRepository extends JpaRepository<Oeuvre, String>{
 
 }
