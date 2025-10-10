@@ -1,9 +1,9 @@
 BEGIN TRANSACTION;
 
 INSERT INTO Oeuvre(titre,auteur,editeur,etat) VALUES
-        ('Les Misérables','Victor Hugo','Gallimard','non réservée'),
-        ('Le Petit Prince','Antoine de Saint-Exupéry','Larousse','non réservée'),
-        ('Harry Potter et la coupe de feu','J.K Rowling','Gallimard','non réservée');
+        ('Les Misérables','Victor Hugo','Gallimard','nonreservee'),
+        ('Le Petit Prince','Antoine de Saint-Exupéry','Larousse','nonreservee'),
+        ('Harry Potter et la coupe de feu','J.K Rowling','Gallimard','nonreservee');
 INSERT INTO Usager(nom,prenom) VALUES
     ('BALLOIR','Gael'),
     ('BLEEKER','Maximilien'),

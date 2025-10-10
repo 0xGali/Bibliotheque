@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-CREATE TYPE etatOeuvre AS ENUM ('reservee','non reservee');
+CREATE TYPE etatOeuvre AS ENUM ('reservee','nonreservee');
 
 CREATE TABLE Oeuvre(
     titre VARCHAR(50) PRIMARY KEY,
