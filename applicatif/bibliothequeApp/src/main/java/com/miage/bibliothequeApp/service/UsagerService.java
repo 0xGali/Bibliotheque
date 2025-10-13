@@ -8,6 +8,8 @@ import com.miage.bibliothequeApp.repository.UsagerRepository;
 
 import lombok.Data;
 
+import java.util.Optional;
+
 @Data
 @Service
 public class UsagerService {
@@ -17,5 +19,12 @@ public class UsagerService {
 
     public Iterable<Usager> getUsagers() {
         return usagerRepository.findAll();
+    }
+
+    public Optional<Usager> getUsager(final String nom){return usagerRepository.findById(nom);}
+
+    public Usager addUsager(Usager usager) {
+        Usager savedUsager = usagerRepository.save(usager);
+        return savedUsager;
     }
 }
