@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Bibliotheque - Usagers</title>
 </head>
 <body>
-$END$
+
+<nav>
+    <div>
+        <div>
+            <a href=".">Retour à l'accueil</a>
+        </div>
+    </div>
+</nav>
+
+
+<div>
+    <h2>Liste des Usagers</h2>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${usagers.empty}">
+                <td colspan="3">Aucun employée en base de données</td>
+            </tr>
+            <tr th:each="usager: ${usagers}">
+                <td><span th:text="${usager.nom}"> Nom </span></td>
+                <td><span th:text="${usager.prenom}"> Prenom </span></td>
+            </tr>
+            </tbody>
+        </table>
+        <button onclick="window.location.href = '/formUsager';">+</button>
+    </div>
+</div>
 </body>
 </html>

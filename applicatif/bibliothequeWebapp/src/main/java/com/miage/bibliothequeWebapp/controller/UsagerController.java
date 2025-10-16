@@ -17,20 +17,21 @@ public class UsagerController {
     private UsagerService service;
     @GetMapping("/voirLesUsagers")
     public String readUsagers(Model model) {Iterable<Usager> listUsager = service.getUsagers();
-        model.addAttribute("clients", listUsager);
-        return "home";
+        model.addAttribute("usagers", listUsager);
+        return "usagers";
     }
 
     @GetMapping("/voirUnUsager")
-    public String readUsager(Model model, @PathVariable final String nom) {Iterable<Usager> listUsager = service.getUsagers();
-        model.addAttribute("clients", listUsager);
-        return "home";
+    public String readUsager(Model model, @PathVariable final String nom) {
+        Usager usager = service.getUsager(nom);
+        model.addAttribute("usager", usager);
+        return "usager";
     }
 
     @GetMapping("/formUsager")
     public String createUsager(Model model) {
         Usager u = new Usager();
-        model.addAttribute("client", u);
+        model.addAttribute("usager", u);
         return "formNewUsager";
     }
     @PostMapping("/addUsager")

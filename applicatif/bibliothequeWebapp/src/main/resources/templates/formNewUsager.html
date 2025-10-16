@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Bibliotheque - Ajout d'un Usager</title>
 </head>
 <body>
-$END$
+<div>
+
+    <h2>Ajout d'un nouvel Usager</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addUsager}" th:object="${usager}">
+            <div>
+                <label for="nameInput">Nom</label>
+                <input type="text" th:field="*{nom}" id="nameInput" placeholder="Saisir le Nom" aria-describedby="nameHelp">
+                <small id="nameHelp">Merci d'écrire le prénom de l'usager.</small>
+            </div>
+            <div>
+                <label for="firstNameInput">Prénom</label>
+                <input
+                        type="text" th:field="*{prenom}" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Saisir le Préom">
+                <small id="firstNameHelp">Merci d'écrire le prénom de l'utilisateur.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
 </body>
 </html>

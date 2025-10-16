@@ -1,16 +1,11 @@
-package com.miage.bibliothequeApp.model;
+package com.miage.bibliothequeWebapp.model;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "Exemplaire")
 public class Exemplaire {
-    @EmbeddedId
-    private ExemplaireId id;
 
-    @Enumerated(EnumType.STRING)
+    private ExemplaireId id;
     private EtatExemplaire etat;
 
     // Getters et setters

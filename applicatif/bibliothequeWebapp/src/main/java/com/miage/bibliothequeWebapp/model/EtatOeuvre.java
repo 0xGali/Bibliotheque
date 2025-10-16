@@ -1,6 +1,4 @@
-package com.miage.bibliothequeApp.model;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.miage.bibliothequeWebapp.model;
 
 public enum EtatOeuvre {
     reservee,nonreservee

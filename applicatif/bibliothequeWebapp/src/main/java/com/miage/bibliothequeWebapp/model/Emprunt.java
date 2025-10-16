@@ -1,4 +1,4 @@
-package com.miage.bibliothequeApp.model;
+package com.miage.bibliothequeWebapp.model;
 
 public class Emprunt {
 

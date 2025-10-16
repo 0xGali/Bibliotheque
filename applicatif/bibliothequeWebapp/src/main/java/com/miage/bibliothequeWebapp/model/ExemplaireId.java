@@ -1,10 +1,9 @@
-package com.miage.bibliothequeApp.model;
+package com.miage.bibliothequeWebapp.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import jakarta.persistence.Embeddable;
 
-@Embeddable
+
 public class ExemplaireId implements Serializable {
     private String titre;
     private Long numexemplaire;
