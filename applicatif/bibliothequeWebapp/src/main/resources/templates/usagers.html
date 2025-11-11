@@ -27,15 +27,16 @@
             </thead>
             <tbody>
             <tr th:if="${usagers.empty}">
-                <td colspan="3">Aucun employée en base de données</td>
+                <td colspan="3">Aucun usager en base de données</td>
             </tr>
             <tr th:each="usager: ${usagers}">
-                <td><span th:text="${usager.nom}"> Nom </span></td>
-                <td><span th:text="${usager.prenom}"> Prenom </span></td>
+                <td><span th:text="${usager.getNom().toUpperCase()}"> Nom </span></td>
+                <td><span th:text="${usager.getPrenom()}"> Prenom </span></td>
+                <td><a th:href="'/voirUnUsager/'+${usager.getNom()}">Voir</a></td>
             </tr>
             </tbody>
         </table>
-        <button onclick="window.location.href = '/formUsager';">+</button>
+        <button onclick="window.location.href = '/formUsager';">Ajouter un Usager</button>
     </div>
 </div>
 </body>

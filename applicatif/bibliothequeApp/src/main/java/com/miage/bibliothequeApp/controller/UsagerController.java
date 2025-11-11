@@ -20,7 +20,7 @@ public class UsagerController {
         return usagerService.getUsagers();
     }
 
-    @GetMapping("/usager/{id}")
+    @GetMapping("/usager/{nom}")
     public Usager getUsager(@PathVariable("nom") final String nom) {
         Optional<Usager> usager = usagerService.getUsager(nom);
         if (usager.isPresent()) {

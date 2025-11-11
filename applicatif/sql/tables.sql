@@ -16,27 +16,27 @@ CREATE TABLE Usager(
 );
 
 CREATE TABLE Reservation(
-    titre VARCHAR(50) REFERENCES Oeuvre(titre),
-    nom VARCHAR(50) REFERENCES Usager(nom),
+    titre_oeuvre VARCHAR(50) REFERENCES Oeuvre(titre),
+    nom_usager VARCHAR(50) REFERENCES Usager(nom),
     dateReservation DATE,
-    PRIMARY KEY(titre,nom,dateReservation)
+    PRIMARY KEY(titre_oeuvre,nom_usager,dateReservation)
 );
 
 CREATE TYPE etatExemplaire AS ENUM ('disponible','emprunte');
 
 CREATE TABLE Exemplaire(
-    titre VARCHAR(50) REFERENCES Oeuvre(titre),
+    titre_oeuvre VARCHAR(50) REFERENCES Oeuvre(titre),
     numExemplaire serial,
     etat etatExemplaire,
-    PRIMARY KEY(titre,numExemplaire)
+    PRIMARY KEY(titre_oeuvre,numExemplaire)
 );
 
 CREATE TABLE Emprunt(
-    nom VARCHAR(50) REFERENCES Usager(nom),
-    titre VARCHAR(50),
-    numExemplaire INTEGER,
+    nom_usager VARCHAR(50) REFERENCES Usager(nom),
+    titre_oeuvre_emprunte VARCHAR(50),
+    numExemplaire_emprunte INTEGER,
     dateEmprunt DATE,
-    PRIMARY KEY(nom,titre,numExemplaire,dateEmprunt),
-    FOREIGN KEY(titre, numExemplaire) REFERENCES Exemplaire(titre, numExemplaire)
+    PRIMARY KEY(nom_usager,titre_oeuvre_emprunte,numExemplaire_emprunte,dateEmprunt),
+    FOREIGN KEY(titre_oeuvre_emprunte, numExemplaire_emprunte) REFERENCES Exemplaire(titre_oeuvre, numExemplaire)
 );
  COMMIT;

@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bibliotheque - Usager</title>
 </head>
 <body>
-
+    <h2 th:text="${usager.getPrenom()}+' '+${usager.getNom().toUpperCase()}"> Prenom Nom </h2>
+<h3>Réservations : </h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Oeuvre</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${usager.getReservations().empty}">
+            <td colspan="3">Aucune Réservation en base de données</td>
+        </tr>
+        <tr th:each="reservation: ${usager.getReservations()}">
+            <td><span th:text="${reservation.getTitre_oeuvre()}"> Oeuvre </span></td>
+            <td><span th:text="${reservation.getDateReservation()}"> Date </span></td>
+        </tr>
+        </tbody>
+    </table>
+    <button onclick="window.location.href = '/choixReservation';">Faire Une Reservation</button>
 </body>
 </html>

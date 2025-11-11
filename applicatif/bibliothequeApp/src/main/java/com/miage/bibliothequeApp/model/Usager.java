@@ -1,9 +1,11 @@
 package com.miage.bibliothequeApp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,4 +16,7 @@ public class Usager {
     private String nom;
 
     private String prenom;
+
+    @OneToMany(mappedBy = "id.nom_usager", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservations;
 }

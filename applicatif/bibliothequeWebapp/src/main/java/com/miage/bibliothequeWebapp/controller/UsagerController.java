@@ -21,7 +21,7 @@ public class UsagerController {
         return "usagers";
     }
 
-    @GetMapping("/voirUnUsager")
+    @GetMapping("/voirUnUsager/{nom}")
     public String readUsager(Model model, @PathVariable final String nom) {
         Usager usager = service.getUsager(nom);
         model.addAttribute("usager", usager);

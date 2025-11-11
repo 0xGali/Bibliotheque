@@ -10,7 +10,7 @@ INSERT INTO Usager(nom,prenom) VALUES
     ('MIESCH','Nathanael'),
     ('JACQUOT','Reika');
 
-INSERT INTO Exemplaire(titre,etat) VALUES
+INSERT INTO Exemplaire(titre_oeuvre,etat) VALUES
     ('Les Misérables','disponible'),
     ('Les Misérables','disponible'),
     ('Les Misérables','disponible'),
