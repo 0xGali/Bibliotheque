@@ -21,4 +21,6 @@ INSERT INTO Exemplaire(titre_oeuvre,etat) VALUES
     ('Harry Potter et la coupe de feu','disponible'),
     ('Harry Potter et la coupe de feu','disponible');
 
+INSERT INTO Reservation(titre_oeuvre, nom_usager) values('Les Misérables','JACQUOT');
+
 COMMIT;

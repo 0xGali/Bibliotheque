@@ -18,7 +18,7 @@ CREATE TABLE Usager(
 CREATE TABLE Reservation(
     titre_oeuvre VARCHAR(50) REFERENCES Oeuvre(titre),
     nom_usager VARCHAR(50) REFERENCES Usager(nom),
-    dateReservation DATE,
+    dateReservation DATE DEFAULT CURRENT_DATE,
     PRIMARY KEY(titre_oeuvre,nom_usager,dateReservation)
 );
 
