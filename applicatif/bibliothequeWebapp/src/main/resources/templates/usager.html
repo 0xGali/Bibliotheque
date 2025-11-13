@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Bibliotheque - Usager</title>
@@ -20,10 +20,10 @@
         </tr>
         <tr th:each="reservation: ${usager.getReservations()}">
             <td><span th:text="${reservation.getId().getTitre_oeuvre()}"> Oeuvre </span></td>
-            <td><span th:text="${reservation.getId().getDate_reservation()}"> Date </span></td>
+            <td><span th:text="${reservation.getId().getDate_reservation_formatee()}"> Date </span></td>
         </tr>
         </tbody>
     </table>
-    <button onclick="window.location.href = '/choixReservation';">Faire Une Reservation</button>
+    <button onclick="window.location.href = '/formReservation';">Faire Une Reservation</button>
 </body>
 </html>

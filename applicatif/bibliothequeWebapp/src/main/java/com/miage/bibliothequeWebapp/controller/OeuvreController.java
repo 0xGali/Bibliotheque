@@ -1,6 +1,7 @@
 package com.miage.bibliothequeWebapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.miage.bibliothequeWebapp.model.Oeuvre;
 import com.miage.bibliothequeWebapp.service.OeuvreService;
 
+@Controller
 public class OeuvreController {
     @Autowired
     private OeuvreService service;
+
     @GetMapping("/voirLesOeuvres")
     public String readOeuvres(Model model) {Iterable<Oeuvre> listOeuvre = service.getOeuvres();
         model.addAttribute("oeuvres", listOeuvre);

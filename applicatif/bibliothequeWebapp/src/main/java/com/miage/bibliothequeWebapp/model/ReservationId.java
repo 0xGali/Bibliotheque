@@ -1,5 +1,6 @@
 package com.miage.bibliothequeWebapp.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -29,6 +30,11 @@ public class ReservationId {
 
     public String getTitre_oeuvre() {
         return titre_oeuvre;
+    }
+
+    public String getDate_reservation_formatee() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(this.date_reservation);
     }
 
     @Override

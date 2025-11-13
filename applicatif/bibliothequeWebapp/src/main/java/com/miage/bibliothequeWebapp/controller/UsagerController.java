@@ -39,4 +39,9 @@ public class UsagerController {
         service.saveUsager(usager);
         return new ModelAndView("redirect:/voirLesUsagers");
     }
+
+    @GetMapping("/formReservation")
+    public String formReservation(Model model) {
+        return "formReservation";
+    }
 }
