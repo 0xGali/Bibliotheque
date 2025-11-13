@@ -19,8 +19,8 @@
             <td colspan="3">Aucune Réservation en base de données</td>
         </tr>
         <tr th:each="reservation: ${usager.getReservations()}">
-            <td><span th:text="${reservation.getTitre_oeuvre()}"> Oeuvre </span></td>
-            <td><span th:text="${reservation.getDateReservation()}"> Date </span></td>
+            <td><span th:text="${reservation.getId().getTitre_oeuvre()}"> Oeuvre </span></td>
+            <td><span th:text="${reservation.getId().getDate_reservation()}"> Date </span></td>
         </tr>
         </tbody>
     </table>

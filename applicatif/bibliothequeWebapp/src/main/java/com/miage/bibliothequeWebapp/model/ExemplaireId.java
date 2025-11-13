@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class ExemplaireId implements Serializable {
     private String titre_oeuvre;
-    private Long numexemplaire;
+    private Long num_exemplaire;
 
     // Constructeurs, getters, setters, equals, hashCode
     public ExemplaireId() {}
 
-    public ExemplaireId(String titre_oeuvre, Long numExemplaire) {
+    public ExemplaireId(String titre_oeuvre, Long nume_exemplaire) {
         this.titre_oeuvre = titre_oeuvre;
-        this.numexemplaire = numExemplaire;
+        this.num_exemplaire = num_exemplaire;
     }
 
     // Getters et setters
@@ -24,11 +24,11 @@ public class ExemplaireId implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         ExemplaireId that = (ExemplaireId) o;
         return Objects.equals(titre_oeuvre, that.titre_oeuvre) &&
-                Objects.equals(numexemplaire, that.numexemplaire);
+                Objects.equals(num_exemplaire, that.num_exemplaire);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titre_oeuvre, numexemplaire);
+        return Objects.hash(titre_oeuvre, num_exemplaire);
     }
 }
