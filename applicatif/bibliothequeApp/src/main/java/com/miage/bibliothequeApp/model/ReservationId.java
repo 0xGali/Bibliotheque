@@ -1,11 +1,13 @@
 package com.miage.bibliothequeApp.model;
 
 import jakarta.persistence.Embeddable;
+import lombok.Data;
 
 import java.util.Date;
 import java.util.Objects;
 
 @Embeddable
+@Data
 public class ReservationId {
 
     private String titre_oeuvre;
@@ -19,18 +21,6 @@ public class ReservationId {
         this.titre_oeuvre = titre_oeuvre;
         this.nom_usager = nom_usager;
         this.date_reservation = date_reservation;
-    }
-
-    public String getNom_usager() {
-        return nom_usager;
-    }
-
-    public Date getDate_reservation() {
-        return date_reservation;
-    }
-
-    public String getTitre_oeuvre() {
-        return titre_oeuvre;
     }
 
     @Override

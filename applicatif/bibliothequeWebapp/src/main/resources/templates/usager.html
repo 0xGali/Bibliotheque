@@ -24,6 +24,30 @@
         </tr>
         </tbody>
     </table>
-    <button onclick="window.location.href = '/formReservation';">Faire Une Reservation</button>
+    <script>
+        function onFaireUneReservationClick(){
+            document.getElementById("faireUneReservationBouton").hidden = true;
+            document.getElementById("reservationForm").hidden = false;
+            document.getElementById("hideReservationForm").hidden = false;
+        }
+
+        function onHideReservationFormClick(){
+            document.getElementById("faireUneReservationBouton").hidden = false;
+            document.getElementById("reservationForm").hidden = true;
+            document.getElementById("hideReservationForm").hidden = true;
+        }
+    </script>
+    <button id="faireUneReservationBouton" onclick=onFaireUneReservationClick()>Faire Une Reservation</button>
+    <form hidden="true" id="reservationForm"
+          method="post"
+          th:action="@{/faireUneReservation}" th:object="${reservation}">
+        <h4>Nouvelle Reservation : </h4>
+        <select th:field="*{titre_oeuvre}">
+            <option th:each="oeuvre: ${oeuvres}" th:value="${oeuvre.getTitre()}" th:text="${oeuvre.getTitre()}"> Nom </option>
+        </select>
+        <input type="hidden" th:field="*{nom_usager}"/>
+        <button type="submit">Faire une réservation</button>
+    </form>
+    <h6><a hidden="true" id="hideReservationForm" onclick=onHideReservationFormClick()>Retour</a></h6>
 </body>
 </html>

@@ -5,8 +5,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 @Entity
 @Table(name = "Reservation")
@@ -14,6 +12,14 @@ public class Reservation {
 
     @Id
     private ReservationId id;
+
+    public Reservation(ReservationId id) {
+        this.id = id;
+    }
+
+    public Reservation() {
+
+    }
 
     public ReservationId getId() {
         return id;

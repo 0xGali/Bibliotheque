@@ -1,16 +1,18 @@
 package com.miage.bibliothequeWebapp.model;
 
+import lombok.Data;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
+@Data
 public class ReservationId {
 
     private String titre_oeuvre;
     private String nom_usager;
     private Date date_reservation;
 
-    // Constructeurs, getters, setters, equals, hashCode
     public ReservationId() {}
 
     public ReservationId(String titre_oeuvre, String nom_usager, Date date_reservation) {
@@ -19,18 +21,6 @@ public class ReservationId {
         this.date_reservation = date_reservation;
     }
 
-
-    public String getNom_usager() {
-        return nom_usager;
-    }
-
-    public Date getDate_reservation() {
-        return date_reservation;
-    }
-
-    public String getTitre_oeuvre() {
-        return titre_oeuvre;
-    }
 
     public String getDate_reservation_formatee() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

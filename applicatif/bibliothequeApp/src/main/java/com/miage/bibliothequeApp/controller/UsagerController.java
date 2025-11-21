@@ -31,6 +31,7 @@ public class UsagerController {
     }
 
     @PostMapping("/addUsager")
+    @ResponseBody
     public Usager addUsager(@RequestBody final Usager usager) {
         return usagerService.addUsager(usager);
     }

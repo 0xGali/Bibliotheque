@@ -7,7 +7,7 @@ CREATE TABLE Oeuvre(
     auteur VARCHAR(50),
     editeur VARCHAR(50),
     etat etatOeuvre,
-    nb_resa INTEGER
+    nb_resa INTEGER DEFAULT 0
 );
 
 CREATE TABLE Usager(
@@ -35,7 +35,7 @@ CREATE TABLE Emprunt(
     nom_usager VARCHAR(50) REFERENCES Usager(nom),
     titre_oeuvre_emprunte VARCHAR(50),
     num_exemplaire_emprunte INTEGER,
-    date_emprunt DATE,
+    date_emprunt DATE DEFAULT CURRENT_DATE,
     PRIMARY KEY(nom_usager,titre_oeuvre_emprunte,num_exemplaire_emprunte,date_emprunt),
     FOREIGN KEY(titre_oeuvre_emprunte, num_exemplaire_emprunte) REFERENCES Exemplaire(titre_oeuvre, num_exemplaire)
 );

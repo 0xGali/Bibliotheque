@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
 INSERT INTO Oeuvre(titre,auteur,editeur,etat, nb_resa) VALUES
-        ('Les Misérables','Victor Hugo','Gallimard','nonreservee',0),
+        ('Les Misérables','Victor Hugo','Gallimard','nonreservee',1),
         ('Le Petit Prince','Antoine de Saint-Exupéry','Larousse','nonreservee',0),
         ('Harry Potter et la coupe de feu','J.K Rowling','Gallimard','nonreservee',0);
 INSERT INTO Usager(nom,prenom) VALUES

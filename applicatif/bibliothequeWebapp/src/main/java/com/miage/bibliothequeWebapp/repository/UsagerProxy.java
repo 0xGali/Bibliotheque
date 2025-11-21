@@ -48,12 +48,12 @@ public class UsagerProxy {
         return response.getBody();
     }
 
-    public Usager createUsager(Usager e) {
+    public Usager createUsager(Usager u) {
         String baseApiUrl = props.getApiUrl();
         String createUsagerUrl = baseApiUrl + "/addUsager";
 
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Usager> request = new HttpEntity<Usager>(e);
+        HttpEntity<Usager> request = new HttpEntity<Usager>(u);
         ResponseEntity<Usager> response = restTemplate.exchange(
                 createUsagerUrl,
                 HttpMethod.POST,
