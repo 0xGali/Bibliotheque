@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheque - Oeuvre</title>
+</head>
+<body>
+    <h2 th:text="${oeuvre.getTitre()}"> Titre </h2>
+    <h3>Auteur : <span th:text="${oeuvre.getAuteur()}"> Auteur </span></h3>
+    <h3>Editeur : <span th:text="${oeuvre.getEditeur()}"> Editeur </span></h3>
+    <h3>Etat : <span th:text="${oeuvre.getEtat()}"> Etat </span></h3>
+
+</body>
+</html>

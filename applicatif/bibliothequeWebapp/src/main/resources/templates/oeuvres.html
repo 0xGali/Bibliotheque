@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bibliotheque - Oeuvres</title>
+</head>
+<body>
+
+<nav>
+    <div>
+        <div>
+            <a href=".">Retour à l'accueil</a>
+        </div>
+    </div>
+</nav>
+
+
+<div>
+    <h2>Liste des Oeuvres</h2>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Editeur</th>
+                <th>Etat</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${oeuvres.empty}">
+                <td colspan="4">Aucune oeuvre en base de données</td>
+            </tr>
+            <tr th:each="oeuvre: ${oeuvres}">
+                <td><span th:text="${oeuvre.getTitre()}"> Titre </span></td>
+                <td><span th:text="${oeuvre.getAuteur()}"> Auteur </span></td>
+                <td><span th:text="${oeuvre.getEditeur()}"> Editeur </span></td>
+                <td><span th:text="${oeuvre.getEtat()}"> Etat </span></td>
+            </tr>
+            </tbody>
+        </table>
+        <button onclick="window.location.href = '/formOeuvre';">Ajouter une Oeuvre</button>
+    </div>
+</div>
+</body>
+</html>

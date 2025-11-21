@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Bibliotheque - Ajout d'une Oeuvre</title>
+</head>
+<body>
+<div>
 
+    <h2>Ajout d'une nouvelle Oeuvre</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addOeuvre}" th:object="${oeuvre}">
+            <div>
+                <label for="titreInput">Titre</label>
+                <input type="text" th:field="*{titre}" id="titreInput" placeholder="Saisir le Titre" aria-describedby="titreHelp">
+                <small id="titreHelp">Merci d'écrire le titre de l'oeuvre.</small>
+            </div>
+            <div>
+                <label for="auteurInput">Auteur</label>
+                <input
+                        type="text" th:field="*{auteur}" id="auteurInput" aria-describedby="auteurHelp" placeholder="Saisir l'Auteur">
+                <small id="auteurHelp">Merci d'écrire l'auteur de l'oeuvre.</small>
+            </div>
+            <div>
+                <label for="editeurInput">Editeur</label>
+                <input
+                        type="text" th:field="*{editeur}" id="editeurInput" aria-describedby="editeurHelp" placeholder="Saisir l'Editeur">
+                <small id="editeurHelp">Merci d'écrire l'éditeur de l'oeuvre.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>
