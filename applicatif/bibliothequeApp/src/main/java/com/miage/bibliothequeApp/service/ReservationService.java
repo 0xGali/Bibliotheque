@@ -1,9 +1,6 @@
 package com.miage.bibliothequeApp.service;
 
-import com.miage.bibliothequeApp.model.Oeuvre;
-import com.miage.bibliothequeApp.model.Reservation;
-import com.miage.bibliothequeApp.model.ReservationId;
-import com.miage.bibliothequeApp.model.Usager;
+import com.miage.bibliothequeApp.model.*;
 import com.miage.bibliothequeApp.repository.OeuvreRepository;
 import com.miage.bibliothequeApp.repository.ReservationRepository;
 import com.miage.bibliothequeApp.repository.UsagerRepository;
@@ -48,6 +45,7 @@ public class ReservationService {
 
         reservationRepository.saveAndFlush(reservation);
         oeuvre.setNb_resa(oeuvre.getNb_resa() + 1);
+        oeuvre.setEtat(EtatOeuvre.reservee);
 
         oeuvreRepository.save(oeuvre);
 
