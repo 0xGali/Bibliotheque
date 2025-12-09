@@ -6,7 +6,6 @@
 </head>
 <body>
 <h2>Liste des exemplaires</h2>
-<a href="/formExemplaire">Ajouter un exemplaire</a>
 <table border="1">
     <tr><th>Num</th><th>Titre</th><th>Etat</th><th>Voir</th></tr>
     <tr th:each="ex : ${exemplaires}">
@@ -16,6 +15,7 @@
         <td><a th:href="@{/voirUnExemplaire/{num}(num=${ex.numExemplaire})}">Voir</a></td>
     </tr>
 </table>
+<button onclick="window.location.href = '/formExemplaire';">Ajouter un exemplaire</button>
 <br/>
 <a href="/">Retour à l'accueil</a>
 </body>
