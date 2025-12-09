@@ -1,5 +1,6 @@
 package com.miage.bibliothequeWebapp.service;
 
+import com.miage.bibliothequeWebapp.model.EtatExemplaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class ExemplaireService {
     }
 
     public Exemplaire saveExemplaire(final Exemplaire e) {
+        e.setEtat(EtatExemplaire.disponible);
         return proxy.createExemplaire(e);
     }
 }
