@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvel Emprunt</title>
+</head>
+<body>
+<h2>Créer un emprunt</h2>
+<form action="/addEmpruntWeb" method="post">
+    <label>Usager:
+        <select name="id.nom" required>
+            <option value="">-- Sélectionner un usager --</option>
+            <option th:each="usager : ${usagers}" th:value="${usager.nom}" th:text="${usager.nom + ' (' + usager.prenom + ')'}"></option>
+        </select>
+    </label><br/>
+    <label>Num Exemplaire:
+        <select name="id.numExemplaire" required>
+            <option value="">-- Sélectionner un exemplaire --</option>
+            <option th:each="ex : ${exemplaires}" th:if="${ex.etat.toString() == 'disponible'}" th:value="${ex.numExemplaire}" th:text="${ex.numExemplaire + ' - ' + ex.titreOeuvre + ' (disponible)'}"></option>
+        </select>
+    </label><br/>
+    <label>Date emprunt: <input type="datetime-local" name="id.dateEmprunt" required/></label><br/>
+    <button type="submit">Emprunter</button>
+    <button type="reset">Réinitialiser</button>
+</form>
+<br/>
+<a href="/voirLesEmprunts">Retour</a>
+</body>
+</html>

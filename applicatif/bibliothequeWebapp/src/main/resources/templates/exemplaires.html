@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplaires</title>
+</head>
+<body>
+<h2>Liste des exemplaires</h2>
+<a href="/formExemplaire">Ajouter un exemplaire</a>
+<table border="1">
+    <tr><th>Num</th><th>Titre</th><th>Etat</th><th>Voir</th></tr>
+    <tr th:each="ex : ${exemplaires}">
+        <td th:text="${ex.numExemplaire}"></td>
+        <td th:text="${ex.titreOeuvre}"></td>
+        <td th:text="${ex.etat}"></td>
+        <td><a th:href="@{/voirUnExemplaire/{num}(num=${ex.numExemplaire})}">Voir</a></td>
+    </tr>
+</table>
+<br/>
+<a href="/">Retour à l'accueil</a>
+</body>
+</html>

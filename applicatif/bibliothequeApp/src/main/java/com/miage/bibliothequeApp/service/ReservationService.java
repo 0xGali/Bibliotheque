@@ -1,13 +1,19 @@
 package com.miage.bibliothequeApp.service;
 
-import com.miage.bibliothequeApp.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.miage.bibliothequeApp.model.EtatOeuvre;
+import com.miage.bibliothequeApp.model.Oeuvre;
+import com.miage.bibliothequeApp.model.Reservation;
+import com.miage.bibliothequeApp.model.ReservationId;
+import com.miage.bibliothequeApp.model.Usager;
 import com.miage.bibliothequeApp.repository.OeuvreRepository;
 import com.miage.bibliothequeApp.repository.ReservationRepository;
 import com.miage.bibliothequeApp.repository.UsagerRepository;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ReservationService {
@@ -37,14 +43,14 @@ public class ReservationService {
         Reservation reservation = new Reservation(reservationId);
 
         //Récupérer Usager et Oeuvre
-        Usager usager = usagerRepository.findById(reservationId.getNom_usager())
+        Usager usager = usagerRepository.findById(reservationId.getNomUsager())
                 .orElseThrow(() -> new RuntimeException("Usager non trouvé"));
-        Oeuvre oeuvre = oeuvreRepository.findById(reservationId.getTitre_oeuvre())
+        Oeuvre oeuvre = oeuvreRepository.findById(reservationId.getTitreOeuvre())
                 .orElseThrow(() -> new RuntimeException("Œuvre non trouvée"));
 
 
         reservationRepository.saveAndFlush(reservation);
-        oeuvre.setNb_resa(oeuvre.getNb_resa() + 1);
+        oeuvre.setNbResa(oeuvre.getNbResa() + 1);
         oeuvre.setEtat(EtatOeuvre.reservee);
 
         oeuvreRepository.save(oeuvre);

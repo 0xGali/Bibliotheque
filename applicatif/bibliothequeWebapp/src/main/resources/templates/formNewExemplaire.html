@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvel Exemplaire</title>
+</head>
+<body>
+<h2>Ajouter un exemplaire</h2>
+<form action="/addExemplaireWeb" method="post">
+    <label>Titre oeuvre:
+        <select name="titreOeuvre">
+            <option value="">-- Sélectionner une oeuvre --</option>
+            <option th:each="oeuvre : ${oeuvres}" th:value="${oeuvre.titre}" th:text="${oeuvre.titre}"></option>
+        </select>
+    </label><br/>
+    <label>Etat:
+        <select name="etat">
+            <option value="disponible">disponible</option>
+            <option value="emprunte">emprunte</option>
+        </select>
+    </label><br/>
+    <button type="submit">Ajouter</button>
+</form>
+<br/>
+<a href="/voirLesExemplaires">Retour</a>
+</body>
+</html>

@@ -1,9 +1,5 @@
 package com.miage.bibliothequeWebapp.controller;
 
-import com.miage.bibliothequeWebapp.model.ReservationId;
-import com.miage.bibliothequeWebapp.model.Usager;
-import com.miage.bibliothequeWebapp.service.OeuvreService;
-import com.miage.bibliothequeWebapp.service.UsagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.miage.bibliothequeWebapp.model.ReservationId;
+import com.miage.bibliothequeWebapp.model.Usager;
+import com.miage.bibliothequeWebapp.service.OeuvreService;
+import com.miage.bibliothequeWebapp.service.UsagerService;
 
 @Controller
 public class UsagerController {
@@ -31,7 +32,7 @@ public class UsagerController {
         Usager usager = service.getUsager(nom);
         //on ajoute aussi les oeuvres pour le formulaire de reservation
         ReservationId reservationId = new ReservationId();
-        reservationId.setNom_usager(nom);
+        reservationId.setNomUsager(nom);
         model.addAttribute("oeuvres", oeuvreService.getOeuvres());
         model.addAttribute("usager", usager);
         model.addAttribute("reservation", reservationId);

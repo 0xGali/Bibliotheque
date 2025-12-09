@@ -15,12 +15,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${usager.getReservations().empty}">
+        <tr th:if="${usager.reservations == null || usager.reservations.empty}">
             <td colspan="3">Aucune Réservation en base de données</td>
         </tr>
-        <tr th:each="reservation: ${usager.getReservations()}">
-            <td><span th:text="${reservation.getId().getTitre_oeuvre()}"> Oeuvre </span></td>
-            <td><span th:text="${reservation.getId().getDate_reservation_formatee()}"> Date </span></td>
+        <tr th:each="reservation: ${usager.reservations}" th:if="${usager.reservations != null}">
+            <td><span th:text="${reservation.getId().getTitreOeuvre()}"> Oeuvre </span></td>
+            <td><span th:text="${reservation.getId().getDateReservationFormatee()}"> Date </span></td>
         </tr>
         </tbody>
     </table>
@@ -42,10 +42,11 @@
           method="post"
           th:action="@{/faireUneReservation}" th:object="${reservation}">
         <h4>Nouvelle Reservation : </h4>
-        <select th:field="*{titre_oeuvre}">
+        <select th:field="*{titreOeuvre}">
             <option th:each="oeuvre: ${oeuvres}" th:value="${oeuvre.getTitre()}" th:text="${oeuvre.getTitre()}"> Nom </option>
         </select>
-        <input type="hidden" th:field="*{nom_usager}"/>
+        <input type="hidden" th:field="*{nomUsager}"/>
+        <input type="hidden" th:field="*{dateReservation}"/>
         <button type="submit">Faire une réservation</button>
     </form>
     <h6><a hidden="true" id="hideReservationForm" onclick=onHideReservationFormClick()>Retour</a></h6>

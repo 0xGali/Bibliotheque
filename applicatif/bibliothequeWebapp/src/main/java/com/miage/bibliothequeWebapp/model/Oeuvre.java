@@ -1,8 +1,8 @@
 package com.miage.bibliothequeWebapp.model;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class Oeuvre {
@@ -13,7 +13,7 @@ public class Oeuvre {
 
     private EtatOeuvre etat;
     
-    private Integer nb_resa;
+    private Integer nbRSesa;
 
     private List<Reservation> reservations;
 }

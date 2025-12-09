@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: db_bibliotheque
+    restart: always
+    environment:
+      - POSTGRES_DATABASE=bibliotheque
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./sql/database.sql:/docker-entrypoint-initdb.d/database.sql:ro
+      - ./sql/tables.sql:/docker-entrypoint-initdb.d/tables.sql:ro
+      - ./sql/insert.sql:/docker-entrypoint-initdb.d/insert.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/healthchecks/postgres.sh"]
+      interval: 5s
+      timeout: 3s
+      retries: 5

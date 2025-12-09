@@ -1,14 +1,15 @@
 package com.miage.bibliothequeWebapp.controller;
 
-import com.miage.bibliothequeWebapp.model.ReservationId;
-import com.miage.bibliothequeWebapp.service.ReservationService;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
+import com.miage.bibliothequeWebapp.model.ReservationId;
+import com.miage.bibliothequeWebapp.service.ReservationService;
 
 @Controller
 public class ReservationController {
@@ -18,8 +19,8 @@ public class ReservationController {
 
     @PostMapping("/faireUneReservation")
     public ModelAndView faireUneReservation(@ModelAttribute ReservationId reservationId) {
-        reservationId.setDate_reservation(new Date());
+        reservationId.setDateReservation(new Date());
         service.faireUneReservation(reservationId);
-        return new ModelAndView("redirect:/voirUnUsager/"+reservationId.getNom_usager());
+        return new ModelAndView("redirect:/voirUnUsager/"+reservationId.getNomUsager());
     }
 }

@@ -1,9 +1,16 @@
 package com.miage.bibliothequeApp.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Data
 @Entity
@@ -18,8 +25,8 @@ public class Oeuvre {
     @Column(name = "etat")
     private EtatOeuvre etat;
     
-    private Integer nb_resa;
+    private Integer nbResa;
 
-    @OneToMany(mappedBy = "id.titre_oeuvre", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "id.titreOeuvre", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations;
 }

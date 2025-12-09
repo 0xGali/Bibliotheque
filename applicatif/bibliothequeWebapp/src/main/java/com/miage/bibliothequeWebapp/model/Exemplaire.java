@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class Exemplaire {
-
-    private ExemplaireId id;
+    
+    private Integer numExemplaire;
+    private String titreOeuvre;
     private EtatExemplaire etat;
-
-    // Getters et setters
+    
 }
