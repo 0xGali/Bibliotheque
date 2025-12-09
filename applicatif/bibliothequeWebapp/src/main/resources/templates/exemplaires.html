@@ -9,7 +9,7 @@
 <table border="1">
     <tr><th>Num</th><th>Titre</th><th>Etat</th><th>Voir</th></tr>
     <tr th:each="ex : ${exemplaires}">
-        <td th:text="${ex.numExemplaire}"></td>
+        <td th:text="${ex.getNumExemplaire()}"></td>
         <td th:text="${ex.titreOeuvre}"></td>
         <td th:text="${ex.etat}"></td>
         <td><a th:href="@{/voirUnExemplaire/{num}(num=${ex.numExemplaire})}">Voir</a></td>

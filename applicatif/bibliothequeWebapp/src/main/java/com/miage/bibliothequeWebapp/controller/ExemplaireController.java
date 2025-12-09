@@ -1,5 +1,6 @@
 package com.miage.bibliothequeWebapp.controller;
 
+import com.miage.bibliothequeWebapp.model.EtatExemplaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,8 +39,9 @@ public class ExemplaireController {
         return "formNewExemplaire";
     }
 
-    @PostMapping("/addExemplaireWeb")
+    @PostMapping("/addExemplaire")
     public ModelAndView saveExemplaire(@ModelAttribute Exemplaire exemplaire) {
+        exemplaire.setEtat(EtatExemplaire.disponible);
         service.saveExemplaire(exemplaire);
         return new ModelAndView("redirect:/voirLesExemplaires");
     }

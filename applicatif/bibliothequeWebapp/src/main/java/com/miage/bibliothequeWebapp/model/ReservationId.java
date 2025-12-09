@@ -22,7 +22,7 @@ public class ReservationId {
     }
 
 
-    public String getdateReservation_formatee() {
+    public String getDateReservationFormatee() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return sdf.format(this.dateReservation);
     }

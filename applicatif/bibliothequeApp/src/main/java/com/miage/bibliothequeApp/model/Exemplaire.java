@@ -2,11 +2,7 @@ package com.miage.bibliothequeApp.model;
 
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Exemplaire {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numExemplaire;
 
     private String titreOeuvre;
