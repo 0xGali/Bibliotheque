@@ -5,18 +5,18 @@
     <title>Emprunts</title>
 </head>
 <body>
+<a href="/">Retour à l'accueil</a>
 <h2>Liste des emprunts</h2>
 <table border="1">
     <tr><th>Usager</th><th>NumEx</th><th>Date</th><th>Titre</th></tr>
     <tr th:each="e : ${emprunts}">
         <td th:text="${e.id.nom}"></td>
         <td th:text="${e.id.numExemplaire}"></td>
-        <td th:text="${e.id.dateEmprunt}"></td>
+        <td th:text="${e.id.getDateEmpruntFormatee()}"></td>
         <td th:text="${e.titreOeuvre}"></td>
     </tr>
 </table>
 <button onclick="window.location.href = '/formEmprunt';">Nouvel Emprunt</button>
 <br/>
-<a href="/">Retour à l'accueil</a>
 </body>
 </html>

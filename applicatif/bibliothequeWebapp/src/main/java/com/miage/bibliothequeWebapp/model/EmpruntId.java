@@ -1,6 +1,7 @@
 package com.miage.bibliothequeWebapp.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,6 +20,11 @@ public class EmpruntId implements Serializable {
         this.nom = nom;
         this.numExemplaire = numExemplaire;
         this.dateEmprunt = dateEmprunt;
+    }
+
+    public String getDateEmpruntFormatee() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(this.dateEmprunt);
     }
 
     @Override
