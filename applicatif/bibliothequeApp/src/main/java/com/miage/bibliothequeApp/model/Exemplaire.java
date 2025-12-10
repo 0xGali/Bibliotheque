@@ -24,20 +24,6 @@ public class Exemplaire {
     @Column(name = "etat")
     private EtatExemplaire etat;
 
-    public void modifierEtat(EtatExemplaire nouvelEtat) {
-        this.etat = nouvelEtat;
-    }
-
-    public static Exemplaire identification(Integer numExemplaire) {
-        Exemplaire ex = new Exemplaire();
-        ex.setNumExemplaire(numExemplaire);
-        return ex;
-    }
-
-    public static void supprimerExemplaire(Integer numExemplaire) {
-        // Logique de suppression gérée par le repository
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
