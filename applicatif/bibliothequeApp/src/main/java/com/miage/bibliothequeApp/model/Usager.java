@@ -5,11 +5,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,8 +16,10 @@ import lombok.NoArgsConstructor;
 public class Usager {
 
     @Id
+    @Column(name = "nom")
     private String nom;
 
+    @Column(name = "prenom")
     private String prenom;
 
     @OneToMany(mappedBy = "id.nomUsager", cascade = CascadeType.ALL, orphanRemoval = true)

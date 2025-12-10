@@ -1,5 +1,6 @@
 package com.miage.bibliothequeWebapp.service;
 
+import com.miage.bibliothequeWebapp.model.EmpruntId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class EmpruntService {
         return proxy.getEmprunts();
     }
 
-    public Emprunt saveEmprunt(final Emprunt e) {
-        return proxy.createEmprunt(e);
+    public EmpruntId saveEmprunt(final EmpruntId eid) {
+        return proxy.createEmprunt(eid);
     }
 }

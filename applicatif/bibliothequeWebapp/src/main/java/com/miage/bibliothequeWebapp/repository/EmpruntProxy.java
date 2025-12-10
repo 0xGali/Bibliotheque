@@ -1,5 +1,6 @@
 package com.miage.bibliothequeWebapp.repository;
 
+import com.miage.bibliothequeWebapp.model.EmpruntId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -33,16 +34,16 @@ public class EmpruntProxy {
         return response.getBody();
     }
 
-    public Emprunt createEmprunt(Emprunt e) {
+    public EmpruntId createEmprunt(EmpruntId eid) {
         String baseApiUrl = props.getApiUrl();
         String url = baseApiUrl + "/addEmprunt";
         RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<Emprunt> request = new HttpEntity<Emprunt>(e);
-        ResponseEntity<Emprunt> response = restTemplate.exchange(
+        HttpEntity<EmpruntId> request = new HttpEntity<>(eid);
+        ResponseEntity<EmpruntId> response = restTemplate.exchange(
                 url,
                 HttpMethod.POST,
                 request,
-                Emprunt.class);
+                EmpruntId.class);
         log.debug("Create Emprunt call " + response.getStatusCode().toString());
         return response.getBody();
     }

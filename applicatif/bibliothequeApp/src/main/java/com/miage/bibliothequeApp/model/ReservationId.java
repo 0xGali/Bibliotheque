@@ -3,6 +3,7 @@ package com.miage.bibliothequeApp.model;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReservationId {
 
+    @Column(name = "titre_oeuvre")
     private String titreOeuvre;
+    @Column(name = "nom_usager")
     private String nomUsager;
+    @Column(name = "date_reservation")
     private Date dateReservation;
 
     public ReservationId(String titreOeuvre, String nomUsager, Date dateReservation) {

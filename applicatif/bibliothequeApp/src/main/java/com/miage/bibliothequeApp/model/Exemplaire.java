@@ -14,18 +14,15 @@ public class Exemplaire {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "num_exemplaire")
     private Integer numExemplaire;
 
+    @Column(name = "titre_oeuvre")
     private String titreOeuvre;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "etat")
     private EtatExemplaire etat;
-
-    public Exemplaire(Integer numExemplaire, String titreOeuvre, EtatExemplaire etat) {
-        this.numExemplaire = numExemplaire;
-        this.titreOeuvre = titreOeuvre;
-        this.etat = etat;
-    }
 
     public void modifierEtat(EtatExemplaire nouvelEtat) {
         this.etat = nouvelEtat;

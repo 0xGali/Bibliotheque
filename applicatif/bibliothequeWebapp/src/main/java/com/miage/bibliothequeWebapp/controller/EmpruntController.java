@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.miage.bibliothequeWebapp.repository.UsagerProxyEmprunt;
 
+import java.util.Date;
+
 @Controller
 public class EmpruntController {
 
@@ -36,10 +38,8 @@ public class EmpruntController {
 
     @GetMapping("/formEmprunt")
     public String formEmprunt(Model model) {
-        Emprunt e = new Emprunt();
-        EmpruntId id = new EmpruntId();
-        e.setId(id);
-        model.addAttribute("emprunt", e);
+        EmpruntId eid = new EmpruntId();
+        model.addAttribute("empruntid", eid);
         // ajouter la liste d'exemplaires disponibles pour sélectionner
         model.addAttribute("exemplaires", exemplaireService.getExemplaires());
         // ajouter la liste d'usagers
@@ -47,9 +47,10 @@ public class EmpruntController {
         return "formNewEmprunt";
     }
 
-    @PostMapping("/addEmpruntWeb")
-    public ModelAndView saveEmprunt(@ModelAttribute Emprunt emprunt) {
-        empruntService.saveEmprunt(emprunt);
+    @PostMapping("/addEmprunt")
+    public ModelAndView saveEmprunt(@ModelAttribute EmpruntId empruntid) {
+        empruntid.setDateEmprunt(new Date());
+        empruntService.saveEmprunt(empruntid);
         return new ModelAndView("redirect:/voirLesEmprunts");
     }
 }

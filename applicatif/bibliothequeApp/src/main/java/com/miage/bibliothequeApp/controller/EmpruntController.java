@@ -1,5 +1,6 @@
 package com.miage.bibliothequeApp.controller;
 
+import com.miage.bibliothequeApp.model.EmpruntId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class EmpruntController {
 	}
 
 	@PostMapping("/addEmprunt")
-	public Emprunt addEmprunt(@RequestBody final Emprunt emprunt) {
-		return empruntService.addEmprunt(emprunt);
+	public Emprunt addEmprunt(@RequestBody final EmpruntId empruntid) {
+		return empruntService.addEmprunt(empruntid);
 	}
 }

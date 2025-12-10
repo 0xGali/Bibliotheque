@@ -2,6 +2,7 @@ package com.miage.bibliothequeApp.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -16,6 +17,7 @@ public class Emprunt {
     @EmbeddedId
     private EmpruntId id;
 
+    @Column(name = "titre_oeuvre_emprunte")
     private String titreOeuvre;
 
     public Emprunt(EmpruntId id, String titreOeuvre) {

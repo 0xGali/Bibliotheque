@@ -6,20 +6,17 @@
 </head>
 <body>
 <h2>Créer un emprunt</h2>
-<form action="/addEmpruntWeb" method="post">
-    <label>Usager:
-        <select name="id.nom" required>
-            <option value="">-- Sélectionner un usager --</option>
-            <option th:each="usager : ${usagers}" th:value="${usager.nom}" th:text="${usager.nom + ' (' + usager.prenom + ')'}"></option>
+<form th:action="@{/addEmprunt}" th:object="${empruntid}" method="post">
+    <label>Selectionnez un Usager:
+        <select th:field="*{nom}" name="id.nom" required>
+            <option th:each="usager : ${usagers}" th:value="${usager.nom}" th:text="${usager.nom + ' ' + usager.prenom}"></option>
         </select>
     </label><br/>
-    <label>Num Exemplaire:
-        <select name="id.numExemplaire" required>
-            <option value="">-- Sélectionner un exemplaire --</option>
-            <option th:each="ex : ${exemplaires}" th:if="${ex.etat.toString() == 'disponible'}" th:value="${ex.numExemplaire}" th:text="${ex.numExemplaire + ' - ' + ex.titreOeuvre + ' (disponible)'}"></option>
+    <label>Selectionnez un Exemplaire:
+        <select th:field="*{numExemplaire}" name="id.numExemplaire" required>
+            <option th:each="ex : ${exemplaires}" th:if="${ex.etat.toString() == 'disponible'}" th:value="${ex.numExemplaire}" th:text="${ex.numExemplaire + ' - ' + ex.titreOeuvre}"></option>
         </select>
     </label><br/>
-    <label>Date emprunt: <input type="datetime-local" name="id.dateEmprunt" required/></label><br/>
     <button type="submit">Emprunter</button>
     <button type="reset">Réinitialiser</button>
 </form>

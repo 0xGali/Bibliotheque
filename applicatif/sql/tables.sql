@@ -37,7 +37,7 @@ CREATE TABLE Emprunt(
     titre_oeuvre_emprunte VARCHAR(50),
     num_exemplaire_emprunte INTEGER,
     date_emprunt DATE,
-    PRIMARY KEY(nom_usager,titre_oeuvre_emprunte,num_exemplaire_emprunte,date_emprunt),
+    PRIMARY KEY(nom_usager,num_exemplaire_emprunte,date_emprunt),
     FOREIGN KEY(titre_oeuvre_emprunte, num_exemplaire_emprunte) REFERENCES Exemplaire(titre_oeuvre, num_exemplaire)
 );
  COMMIT;

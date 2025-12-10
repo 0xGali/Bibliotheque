@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class EmpruntId implements Serializable {
+    @Column(name = "nom_usager")
     private String nom;
+    @Column(name = "num_exemplaire_emprunte")
     private Long numExemplaire;
+    @Column(name = "date_emprunt")
     private Date dateEmprunt;
 
     // Constructeurs, getters, setters, equals, hashCode

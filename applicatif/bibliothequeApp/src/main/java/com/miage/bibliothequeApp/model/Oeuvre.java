@@ -17,14 +17,18 @@ import lombok.Data;
 @Table(name = "Oeuvre")
 public class Oeuvre {
     @Id
+    @Column(name = "titre")
     private String titre;
+    @Column(name = "auteur")
     private String auteur;
+    @Column(name = "editeur")
     private String editeur;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "etat")
     private EtatOeuvre etat;
-    
+
+    @Column(name = "nb_resa")
     private Integer nbResa;
 
     @OneToMany(mappedBy = "id.titreOeuvre", cascade = CascadeType.ALL, orphanRemoval = true)

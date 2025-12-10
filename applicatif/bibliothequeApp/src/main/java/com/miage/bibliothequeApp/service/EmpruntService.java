@@ -41,15 +41,15 @@ public class EmpruntService {
 		return empruntRepository.findAll();
 	}
 
-	public Emprunt addEmprunt(Emprunt emprunt) {
-		log.debug("Creating emprunt for user={}, exemplaire={}", emprunt.getId().getNom(), emprunt.getId().getNumExemplaire());
+	public Emprunt addEmprunt(EmpruntId empruntid) {
+		log.debug("Creating emprunt for user={}, exemplaire={}", empruntid.getNom(), empruntid.getNumExemplaire());
 		
-		if (emprunt == null || emprunt.getId() == null) {
-			throw new RuntimeException("Emprunt ou id d'emprunt invalide");
+		if (empruntid == null) {
+			throw new RuntimeException("Id d'emprunt invalide");
 		}
 
 		// Vérifier que l'usager existe
-		String nomUsager = emprunt.getId().getNom();
+		String nomUsager = empruntid.getNom();
 		if (nomUsager == null || nomUsager.isEmpty()) {
 			throw new RuntimeException("Nom d'usager manquant");
 		}
@@ -57,14 +57,12 @@ public class EmpruntService {
 			throw new RuntimeException("Usager '" + nomUsager + "' inexistant");
 		}
 
-		Long numEx = emprunt.getId().getNumExemplaire();
-		if (numEx == null) {
+		if (empruntid.getNumExemplaire() == null) {
 			throw new RuntimeException("Numéro d'exemplaire manquant dans l'emprunt");
 		}
 
-		Integer numExInt = numEx.intValue();
 
-		Optional<Exemplaire> optEx = exemplaireRepository.findById(numExInt);
+		Optional<Exemplaire> optEx = exemplaireRepository.findById(Math.toIntExact(empruntid.getNumExemplaire()));
 		Exemplaire ex = optEx.orElseThrow(() -> new RuntimeException("Exemplaire introuvable"));
 
 		if (ex.getEtat() == null || ex.getEtat() != EtatExemplaire.disponible) {
@@ -72,16 +70,14 @@ public class EmpruntService {
 		}
 
 		// Compléter le titre de l'emprunt avant de l'enregistrer
-		emprunt.setTitreOeuvre(ex.getTitreOeuvre());
+		Emprunt emprunt = new Emprunt(empruntid,ex.getTitreOeuvre());
 
 		// Sauvegarder l'emprunt
 		Emprunt savedEmprunt = empruntRepository.save(emprunt);
-		log.debug("Emprunt created with ID: {}", savedEmprunt.getId());
 
 		// Mettre à jour l'état de l'exemplaire
 		ex.setEtat(EtatExemplaire.emprunte);
 		exemplaireRepository.save(ex);
-		log.debug("Exemplaire {} marked as emprunte", numExInt);
 
 		// Supprimer la réservation si elle existe pour cet usager et cette oeuvre
 		try {
