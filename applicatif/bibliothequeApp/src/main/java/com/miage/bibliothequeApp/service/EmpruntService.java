@@ -1,16 +1,7 @@
 package com.miage.bibliothequeApp.service;
 
-import com.miage.bibliothequeApp.model.Emprunt;
-import com.miage.bibliothequeApp.model.Exemplaire;
-import com.miage.bibliothequeApp.model.EmpruntId;
-import com.miage.bibliothequeApp.model.EtatExemplaire;
-import com.miage.bibliothequeApp.model.Reservation;
-import com.miage.bibliothequeApp.model.ReservationId;
-import com.miage.bibliothequeApp.model.Usager;
-import com.miage.bibliothequeApp.repository.EmpruntRepository;
-import com.miage.bibliothequeApp.repository.ExemplaireRepository;
-import com.miage.bibliothequeApp.repository.ReservationRepository;
-import com.miage.bibliothequeApp.repository.UsagerRepository;
+import com.miage.bibliothequeApp.model.*;
+import com.miage.bibliothequeApp.repository.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +24,9 @@ public class EmpruntService {
 
 	@Autowired
 	private UsagerRepository usagerRepository;
+
+	@Autowired
+	private OeuvreRepository oeuvreRepository;
 
 	@Autowired
 	private ReservationRepository reservationRepository;
@@ -88,6 +82,12 @@ public class EmpruntService {
 				if (res.getId().getTitreOeuvre().equals(ex.getTitreOeuvre()) &&
 					res.getId().getNomUsager().equals(nomUsager)) {
 					reservationRepository.delete(res);
+					Oeuvre oeuvre = oeuvreRepository.findById(res.getId().getTitreOeuvre()).get();
+					oeuvre.setNbResa(oeuvre.getNbResa() - 1);
+					if(oeuvre.getNbResa() <= 0) {
+						oeuvre.setEtat(EtatOeuvre.nonreservee);
+					}
+					oeuvreRepository.save(oeuvre);
 					log.debug("Reservation cancelled for user={}, title={}", nomUsager, ex.getTitreOeuvre());
 					break;
 				}
