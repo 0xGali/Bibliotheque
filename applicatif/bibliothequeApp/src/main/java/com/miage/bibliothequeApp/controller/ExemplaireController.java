@@ -33,4 +33,10 @@ public class ExemplaireController {
 	public Exemplaire addExemplaire(@RequestBody final Exemplaire exemplaire) {
 		return exemplaireService.addExemplaire(exemplaire);
 	}
+
+	@PostMapping("/deleteExemplaire")
+    public String deleteExemplaire(@RequestBody Integer numExemplaire) {
+        exemplaireService.deleteExemplaire(numExemplaire);
+        return "Exemplaire deleted successfully";
+	}
 }

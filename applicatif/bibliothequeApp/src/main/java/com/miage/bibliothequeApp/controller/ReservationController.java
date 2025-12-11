@@ -1,5 +1,6 @@
 package com.miage.bibliothequeApp.controller;
 
+import com.miage.bibliothequeApp.model.EmpruntId;
 import com.miage.bibliothequeApp.model.ReservationId;
 import com.miage.bibliothequeApp.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,11 @@ public class ReservationController {
     public ReservationId faireUneReservation(@RequestBody final ReservationId reservationId) {
         return reservationService.faireUneReservation(reservationId);
     }
+
+    @PostMapping("/deleteReservation")
+	public String deleteReservation(@RequestBody final ReservationId reservationId) {
+		reservationService.deleteReservation(reservationId);
+		return "Reservation deleted successfully";
+	}
 
 }

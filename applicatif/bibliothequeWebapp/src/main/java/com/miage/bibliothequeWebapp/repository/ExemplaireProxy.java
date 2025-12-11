@@ -70,4 +70,18 @@ public class ExemplaireProxy {
         log.debug("Create Exemplaire call " + response.getStatusCode().toString());
         return response.getBody();
     }
+
+    public void deleteExemplaire(Integer numExemplaire) {
+        String baseApiUrl = props.getApiUrl();
+        String url = baseApiUrl + "/deleteExemplaire";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Integer> request = new HttpEntity<>(numExemplaire);
+        ResponseEntity<Void> response = restTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                request,
+                Void.class
+        );
+        log.debug("Delete Exemplaire call " + response.getStatusCode().toString());
+    }
 }

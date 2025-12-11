@@ -25,4 +25,8 @@ public class ExemplaireService {
         e.setEtat(EtatExemplaire.disponible);
         return proxy.createExemplaire(e);
     }
+
+    public void deleteExemplaire(final Integer num) {
+        proxy.deleteExemplaire(num);
+    }
 }

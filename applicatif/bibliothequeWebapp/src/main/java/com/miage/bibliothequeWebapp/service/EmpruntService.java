@@ -20,4 +20,8 @@ public class EmpruntService {
     public EmpruntId saveEmprunt(final EmpruntId eid) {
         return proxy.createEmprunt(eid);
     }
+
+    public void deleteEmprunt(final EmpruntId eid) {
+        proxy.deleteEmprunt(eid);
+    }
 }

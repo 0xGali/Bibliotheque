@@ -16,4 +16,8 @@ public class ReservationService {
         return reservationId;
     }
 
+    public void deleteReservation(final ReservationId rid) {
+        reservationProxy.deleteReservation(rid);
+    }
+
 }

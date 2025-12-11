@@ -21,6 +21,17 @@
         <tr th:each="reservation: ${usager.reservations}" th:if="${usager.reservations != null}">
             <td><span th:text="${reservation.getId().getTitreOeuvre()}"> Oeuvre </span></td>
             <td><span th:text="${reservation.getId().getDateReservationFormatee()}"> Date </span></td>
+            <td>
+                <!-- Formulaire pour annuler la réservation -->
+                <form th:action="@{/deleteReservation}" method="post">
+                    <input type="hidden" name="titreOeuvre" th:value="${reservation.id.titreOeuvre}" />
+                    <input type="hidden" name="nomUsager" th:value="${reservation.id.nomUsager}" />
+                    <input type="hidden" name="dateReservation" th:value="${reservation.id.dateReservation.time}" />
+                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">
+                        Annuler
+                    </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

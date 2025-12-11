@@ -13,6 +13,15 @@
         <td th:text="${ex.titreOeuvre}"></td>
         <td th:text="${ex.etat}"></td>
         <td><a th:href="@{/voirUnExemplaire/{num}(num=${ex.numExemplaire})}">Voir</a></td>
+        <td>
+            <!-- Formulaire pour supprimer l'exemplaire -->
+            <form th:action="@{/deleteExemplaire}" method="post">
+                <input type="hidden" name="numExemplaire" th:value="${ex.numExemplaire}" />
+                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet exemplaire ?');">
+                    Supprimer
+                </button>
+            </form>
+        </td>
     </tr>
 </table>
 <button onclick="window.location.href = '/formExemplaire';">Ajouter un exemplaire</button>

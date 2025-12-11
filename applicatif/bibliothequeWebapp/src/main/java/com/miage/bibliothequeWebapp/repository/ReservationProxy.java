@@ -1,6 +1,7 @@
 package com.miage.bibliothequeWebapp.repository;
 
 import com.miage.bibliothequeWebapp.configuration.CustomProperties;
+import com.miage.bibliothequeWebapp.model.EmpruntId;
 import com.miage.bibliothequeWebapp.model.ReservationId;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,18 @@ public class ReservationProxy {
         log.debug("Create Reservation call " + response.getStatusCode().toString());
 
         return response.getBody();
+    }
+
+    public void deleteReservation(ReservationId eid) {
+        String baseApiUrl = props.getApiUrl();
+        String url = baseApiUrl + "/deleteReservation";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<ReservationId> request = new HttpEntity<>(eid);
+        ResponseEntity<Void> response = restTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                request,
+                Void.class);
+        log.debug("Delete Reservation call " + response.getStatusCode().toString());
     }
 }

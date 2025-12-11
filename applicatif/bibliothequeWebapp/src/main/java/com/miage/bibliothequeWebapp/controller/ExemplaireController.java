@@ -52,4 +52,10 @@ public class ExemplaireController {
         model.addAttribute("exemplaire", e);
         return "exemplaire";
     }
+
+    @PostMapping("/deleteExemplaire")
+    public ModelAndView deleteExemplaire(@ModelAttribute("numExemplaire") final Integer num) {
+        service.deleteExemplaire(num);
+        return new ModelAndView("redirect:/voirLesExemplaires");
+    }
 }

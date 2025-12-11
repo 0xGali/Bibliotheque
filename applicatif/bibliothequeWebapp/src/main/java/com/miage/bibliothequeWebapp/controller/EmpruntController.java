@@ -53,4 +53,10 @@ public class EmpruntController {
         empruntService.saveEmprunt(empruntid);
         return new ModelAndView("redirect:/voirLesEmprunts");
     }
+
+    @PostMapping("/deleteEmprunt")
+    public ModelAndView deleteEmprunt(@ModelAttribute EmpruntId empruntid) {
+        empruntService.deleteEmprunt(empruntid);
+        return new ModelAndView("redirect:/voirLesEmprunts");
+    }
 }

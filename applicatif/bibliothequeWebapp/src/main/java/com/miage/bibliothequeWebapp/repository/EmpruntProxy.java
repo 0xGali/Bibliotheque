@@ -47,4 +47,17 @@ public class EmpruntProxy {
         log.debug("Create Emprunt call " + response.getStatusCode().toString());
         return response.getBody();
     }
+
+    public void deleteEmprunt(EmpruntId eid) {
+        String baseApiUrl = props.getApiUrl();
+        String url = baseApiUrl + "/deleteEmprunt";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<EmpruntId> request = new HttpEntity<>(eid);
+        ResponseEntity<Void> response = restTemplate.exchange(
+                url,
+                HttpMethod.POST,
+                request,
+                Void.class);
+        log.debug("Delete Emprunt call " + response.getStatusCode().toString());
+    }
 }

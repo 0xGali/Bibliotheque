@@ -99,4 +99,30 @@ public class EmpruntService {
 
 		return savedEmprunt;
 	}
+
+	public void deleteEmprunt(EmpruntId empruntid) {
+		log.debug("Deleting emprunt for user={}, exemplaire={}", empruntid.getNom(), empruntid.getNumExemplaire());
+
+		if (empruntid == null) {
+			throw new RuntimeException("Id d'emprunt invalide");
+		}
+
+		// Vérifier que l'emprunt existe
+		if (!empruntRepository.existsById(empruntid)) {
+			throw new RuntimeException("Emprunt inexistant");
+		}
+
+		// Récupérer l'emprunt pour obtenir le numéro d'exemplaire
+		Emprunt emprunt = empruntRepository.findById(empruntid).get();
+		Long numExemplaire = empruntid.getNumExemplaire();
+
+		// Supprimer l'emprunt
+		empruntRepository.deleteById(empruntid);
+
+		// Mettre à jour l'état de l'exemplaire
+		Optional<Exemplaire> optEx = exemplaireRepository.findById(Math.toIntExact(numExemplaire));
+		Exemplaire ex = optEx.orElseThrow(() -> new RuntimeException("Exemplaire introuvable"));
+		ex.setEtat(EtatExemplaire.disponible);
+		exemplaireRepository.save(ex);
+	}
 }

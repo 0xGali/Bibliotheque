@@ -14,6 +14,17 @@
         <td th:text="${e.id.numExemplaire}"></td>
         <td th:text="${e.id.getDateEmpruntFormatee()}"></td>
         <td th:text="${e.titreOeuvre}"></td>
+        <td>
+            <!-- Formulaire pour supprimer l'emprunt -->
+            <form th:action="@{/deleteEmprunt}" method="post">
+                <input type="hidden" name="nom" th:value="${e.id.nom}" />
+                <input type="hidden" name="numExemplaire" th:value="${e.id.numExemplaire}" />
+                <input type="hidden" name="dateEmprunt" th:value="${e.id.dateEmprunt.time}" />
+                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet emprunt ?');">
+                    Supprimer
+                </button>
+            </form>
+        </td>
     </tr>
 </table>
 <button onclick="window.location.href = '/formEmprunt';">Nouvel Emprunt</button>

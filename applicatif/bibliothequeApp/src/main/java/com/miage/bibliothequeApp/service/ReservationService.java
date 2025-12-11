@@ -57,4 +57,22 @@ public class ReservationService {
 
         return reservationId;
     }
+
+    public void deleteReservation(ReservationId reservationId) {
+        if (!reservationRepository.existsById(reservationId)) {
+            throw new RuntimeException("La réservation n'existe pas.");
+        }
+
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new RuntimeException("Réservation non trouvée"));
+
+        Oeuvre oeuvre = oeuvreRepository.findById(reservationId.getTitreOeuvre())
+                .orElseThrow(() -> new RuntimeException("Œuvre non trouvée"));
+        reservationRepository.delete(reservation);
+        oeuvre.setNbResa(oeuvre.getNbResa() - 1);
+        if (oeuvre.getNbResa() <= 0) {
+            oeuvre.setEtat(EtatOeuvre.nonreservee);
+        }
+        oeuvreRepository.save(oeuvre);
+    }
 }

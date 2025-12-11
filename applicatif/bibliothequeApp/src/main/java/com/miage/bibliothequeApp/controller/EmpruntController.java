@@ -25,4 +25,11 @@ public class EmpruntController {
 	public Emprunt addEmprunt(@RequestBody final EmpruntId empruntid) {
 		return empruntService.addEmprunt(empruntid);
 	}
+
+	@PostMapping("/deleteEmprunt")
+	public String deleteEmprunt(@RequestBody final EmpruntId empruntid) {
+		empruntService.deleteEmprunt(empruntid);
+		return "Emprunt deleted successfully";
+	}
+	
 }
