@@ -11,10 +11,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "Oeuvre")
+@NoArgsConstructor
 public class Oeuvre {
     @Id
     @Column(name = "titre")
@@ -33,4 +35,12 @@ public class Oeuvre {
 
     @OneToMany(mappedBy = "id.titreOeuvre", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations;
+
+    public Oeuvre(String string, String string2, String string3, String string4, int i) {
+        this.titre = string;
+        this.auteur = string2;
+        this.editeur = string3;
+        this.etat = EtatOeuvre.valueOf(string4.toUpperCase());
+        this.nbResa = i;
+    }
 }

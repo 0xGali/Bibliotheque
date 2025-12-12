@@ -54,4 +54,8 @@ public class Reservation {
                 "id=" + id +
                 '}';
     }
+
+    public Reservation(String titre, String nom) {
+        this.id = new ReservationId(titre, nom, new java.util.Date());
+    }
 }

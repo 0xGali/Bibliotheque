@@ -45,4 +45,10 @@ public class Exemplaire {
                 ", etat=" + etat +
                 '}';
     }
+
+    public Exemplaire(String titre, int i, String string) {
+        this.titreOeuvre = titre;
+        this.numExemplaire = i;
+        this.etat = EtatExemplaire.valueOf(string.toUpperCase());
+    }
 }
