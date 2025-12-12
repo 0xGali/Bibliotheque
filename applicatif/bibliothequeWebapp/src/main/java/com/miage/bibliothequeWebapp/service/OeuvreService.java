@@ -20,7 +20,7 @@ public class OeuvreService {
 
     public Oeuvre saveOeuvre(final Oeuvre oeuvre) {
         oeuvre.setEtat(EtatOeuvre.nonreservee);
-        oeuvre.setNbRSesa(0);
+        oeuvre.setNbResa(0);
         oeuvreProxy.createOeuvre(oeuvre);
         return oeuvre;
     }

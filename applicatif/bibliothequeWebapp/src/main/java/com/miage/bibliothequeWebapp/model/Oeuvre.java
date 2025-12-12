@@ -13,7 +13,7 @@ public class Oeuvre {
 
     private EtatOeuvre etat;
     
-    private Integer nbRSesa;
+    private Integer nbResa;
 
     private List<Reservation> reservations;
 }

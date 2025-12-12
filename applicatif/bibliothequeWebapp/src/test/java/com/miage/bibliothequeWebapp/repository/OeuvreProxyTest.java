@@ -55,14 +55,14 @@ class OeuvreProxyTest {
         oeuvre1.setAuteur("Tolkien");
         oeuvre1.setEditeur("Gallimard");
         oeuvre1.setEtat(EtatOeuvre.nonreservee);
-        oeuvre1.setNbRSesa(0);
+        oeuvre1.setNbResa(0);
         
         Oeuvre oeuvre2 = new Oeuvre();
         oeuvre2.setTitre("Harry Potter");
         oeuvre2.setAuteur("Rowling");
         oeuvre2.setEditeur("Gallimard");
         oeuvre2.setEtat(EtatOeuvre.reservee);
-        oeuvre2.setNbRSesa(2);
+        oeuvre2.setNbResa(2);
         
         oeuvres.add(oeuvre1);
         oeuvres.add(oeuvre2);
@@ -113,7 +113,7 @@ class OeuvreProxyTest {
         oeuvre.setAuteur("George Orwell");
         oeuvre.setEditeur("Gallimard");
         oeuvre.setEtat(EtatOeuvre.nonreservee);
-        oeuvre.setNbRSesa(0);
+        oeuvre.setNbResa(0);
 
         stubFor(get(urlEqualTo("/oeuvre/1984"))
                 .willReturn(aResponse()
@@ -142,7 +142,7 @@ class OeuvreProxyTest {
         oeuvre.setAuteur("Saint-Exupéry");
         oeuvre.setEditeur("Gallimard");
         oeuvre.setEtat(EtatOeuvre.nonreservee);
-        oeuvre.setNbRSesa(0);
+        oeuvre.setNbResa(0);
 
         // RestTemplate encode les espaces en %20
         stubFor(get(urlEqualTo("/oeuvre/Le%20Petit%20Prince"))
@@ -168,7 +168,7 @@ class OeuvreProxyTest {
         nouvelleOeuvre.setAuteur("Test Auteur");
         nouvelleOeuvre.setEditeur("Test Editeur");
         nouvelleOeuvre.setEtat(EtatOeuvre.nonreservee);
-        nouvelleOeuvre.setNbRSesa(0);
+        nouvelleOeuvre.setNbResa(0);
 
         stubFor(post(urlEqualTo("/addOeuvre"))
                 .willReturn(aResponse()
