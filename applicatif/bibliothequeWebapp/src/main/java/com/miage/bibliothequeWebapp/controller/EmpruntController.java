@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.miage.bibliothequeWebapp.repository.UsagerProxyEmprunt;
+import com.miage.bibliothequeWebapp.repository.UsagerProxy;
 
 import java.util.Date;
 
@@ -27,7 +27,7 @@ public class EmpruntController {
     private ExemplaireService exemplaireService;
 
     @Autowired
-    private UsagerProxyEmprunt usagerProxyEmprunt;
+    private UsagerProxy usagerProxy;
 
     @GetMapping("/voirLesEmprunts")
     public String readEmprunts(Model model) {
@@ -43,7 +43,7 @@ public class EmpruntController {
         // ajouter la liste d'exemplaires disponibles pour sélectionner
         model.addAttribute("exemplaires", exemplaireService.getExemplaires());
         // ajouter la liste d'usagers
-        model.addAttribute("usagers", usagerProxyEmprunt.getUsagers());
+        model.addAttribute("usagers", usagerProxy.getUsagers());
         return "formNewEmprunt";
     }
 
