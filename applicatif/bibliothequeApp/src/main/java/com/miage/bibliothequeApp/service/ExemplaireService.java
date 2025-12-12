@@ -29,10 +29,6 @@ public class ExemplaireService {
 		return exemplaireRepository.save(exemplaire);
 	}
 
-	public Exemplaire saveExemplaire(Exemplaire exemplaire) {
-		return exemplaireRepository.save(exemplaire);
-	}
-
 	public void deleteExemplaire(final Integer num) {
 		exemplaireRepository.deleteById(num);
 	}
